@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/folder-add.png</file>
+        <file>images/Folder open.png</file>
+        <file>images/Folder close.png</file>
+        <file>images/File save.png</file>
+        <file>images/File Save As.png</file>
+        <file>images/Close File.png</file>
+        <file>images/undo.png</file>
+        <file>images/edit_cut.png</file>
+        <file>images/copy.png</file>
+        <file>images/edit_paste.png</file>
+        <file>images/search.png</file>
+    </qresource>
+</RCC>
