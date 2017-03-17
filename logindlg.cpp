@@ -20,10 +20,8 @@ loginDlg::~loginDlg()
 void loginDlg::on_loginButton_clicked()
 {
     qDebug(ui->lineEdit_pwd->text().toStdString().c_str());
-    if (tr("zkw") == ui->lineEdit_user->text().trimmed()) {
-        if (tr("123") == ui->lineEdit_pwd->text().trimmed()) {
-            accept();
-        }
+    if (tr("zkw") == ui->lineEdit_user->text().trimmed() || (tr("123") == ui->lineEdit_pwd->text().trimmed())) {
+        accept();
     }
     else {
         QMessageBox::warning(this, tr("Warning"), tr( "user name  Or password error" ), QMessageBox::Yes);
