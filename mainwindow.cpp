@@ -194,6 +194,7 @@ void MainWindow::on_action_9_triggered()
     findDlg->setWindowTitle(tr("版本说明"));
     QLineEdit *lineEdit = new QLineEdit(findDlg);
     lineEdit->setText("张坤武制作");
+    lineEdit->setEnabled(false);
     QVBoxLayout *layout = new QVBoxLayout(findDlg);
     layout->addWidget(lineEdit);
     findDlg->show();
