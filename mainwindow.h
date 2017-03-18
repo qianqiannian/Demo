@@ -38,13 +38,13 @@ private slots:
 
     void on_action_V_triggered();   //  粘贴
 
-    void show_findText();   //在该函数中实现查找字符串的功能
+    void show_findText();                  //在该函数中实现查找字符串的功能
 
     void on_action_F_triggered();   //  查找
 
-    void on_action_9_triggered();    //版本说明
+    void on_action_9_triggered();    // 版本说明
 
-    void do_cursorChanged();
+    void do_cursorChanged();        //  获取光标位置
 
 private:
     /*---------------------------------------------------------------------------*/

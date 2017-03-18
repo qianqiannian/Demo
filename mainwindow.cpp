@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     setWindowTitle(m_curFile);
     init_statusBar();   //  初始化状态栏
+    connect(ui->textEdit, SIGNAL(cursorPositionChanged()), this, SLOT(do_cursorChanged()));
 }
 
 MainWindow::~MainWindow()
@@ -71,6 +72,7 @@ bool MainWindow::saveFile(const QString &fileName)
     isSaved = true;
     m_curFile = QFileInfo(fileName).canonicalFilePath();  //获得文件的标准路径
     setWindowTitle(m_curFile);
+    second_StatusLabel->setText(tr("保存文件成功"));
     return true;
 }
 
@@ -117,6 +119,7 @@ bool MainWindow::do_file_Load(const QString &fileName)
     ui->textEdit->setText(in.readAll());    // 将文件中的所有内容都写到文本编辑器中
     m_curFile = QFileInfo(fileName).canonicalFilePath();
     setWindowTitle(m_curFile);
+    second_StatusLabel->setText(tr("打开文件成功"));
     return true;
 }
 
@@ -167,6 +170,8 @@ void MainWindow::on_action_3_triggered()
     //  关闭
     do_file_SaveOrNot();
     ui->textEdit->setVisible(false);
+    first_StatusLabel->setText(tr("文本编辑器已关闭"));
+    second_StatusLabel->setText("张坤武制作");
 }
 
 void MainWindow::on_action_7_triggered()
@@ -229,6 +234,11 @@ void MainWindow::on_action_9_triggered()
 {
     //版本说明
     qDebug("版本说明");
+    QString string = "版本说明";
+    qDebug()<<string;
+    qDebug()<<__FILE__;
+    qDebug()<<__FUNCTION__;
+    qDebug("%d", __LINE__);
     QDialog *findDlg = new QDialog(this);
     findDlg->setWindowTitle(tr("版本说明"));
     QLineEdit *lineEdit = new QLineEdit(findDlg);
@@ -241,5 +251,48 @@ void MainWindow::on_action_9_triggered()
 
 void MainWindow::do_cursorChanged()
 {
+    //  获取光标位置
+
+    //通过textEdit的光标位置得到光标所在行值
+//    QTextDocument *textDocument = ui->textEdit->document();
+    const QTextCursor cursor = ui->textEdit->textCursor();
+//    int lineNumber = cursor.blockNumber();//获取光标所在列用cursor.columnNumber();
+//    QTextBlock textBlock = textDocument->findBlockByLineNumber(lineNumber);//通过行号找到指定行 数据块
+//    QString selectLine = textBlock.text();//将得到的数据存入一个字符串。
+    //    qDebug("%s", selectLine);
+
+    int rowNum = ui->textEdit->document()->blockCount();
+    int colNum = cursor.columnNumber();
+    qDebug("%d, %d", rowNum, colNum);
+    first_StatusLabel->setText(tr("%1 行 %2 列").arg(rowNum).arg(colNum));
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
